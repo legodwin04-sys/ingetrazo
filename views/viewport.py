@@ -11657,6 +11657,7 @@ class Viewport(QOpenGLWidget):
 
     def mouseMoveEvent(self, ev) -> None:
         self._input_t = _time_mod.monotonic()   # P0: input→paint latency
+        self._pan_mode = bool(ev.modifiers() & Qt.ShiftModifier)
         # An Alt released while another window had the keyboard never
         # reaches any filter here; the pointer re-reads it on the move.
         alt = bool(ev.modifiers() & Qt.AltModifier)
